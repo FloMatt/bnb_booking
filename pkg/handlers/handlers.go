@@ -50,3 +50,28 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 		StringMap: stringMap,
 	})
 }
+
+// Single is the handler for the single room page
+func (m *Repository) Single(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "single-rooms.page.tmpl", &models.TemplateData{})
+}
+
+// Deluxe is the handler for the deluxe room page
+func (m *Repository) Deluxe(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "deluxe-rooms.page.tmpl", &models.TemplateData{})
+}
+
+// Contact is the handler for the contact page
+func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
+}
+
+// Reservation is the handler for the reservation page
+func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "make-reservation.page.tmpl", &models.TemplateData{})
+}
+
+// SearchAvailability checks for available rooms and displays them
+func (m *Repository) SearchAvailability(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
+}

@@ -1,0 +1,56 @@
+{{template "base" .}}
+
+{{define "content"}}
+   
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                     <img src="static/images/majors-suite.png" class="img-fluid img-thumbnail rounded mx-auto d-block room-img" alt="room image">
+                </div>
+               
+            </div>
+
+            <div class="row">
+                <div class="col text-center mt-5">
+                    <h1 class="">Welcome to Deluxe Suite</h1>
+                    <p>Our Trusted Home for Rentals! Discover your dream home with ease.<br> At Keja we specialize in connecting you with beautiful, comfortable, and affordable rental properties tailored to your needs. Whether you're looking for a cozy apartment, a spacious family house, or a luxury villa, we’ve got you covered. <br> With our user-friendly platform, expert support, and commitment to quality, finding your next rental is simpler than ever. Let us help you turn a house into your perfect home! Explore now and start your journey today!</p>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    
+                    <a id="check-availability-button" href="#!" class="btn btn-primary">Check Avilability</a>
+                </div>
+            </div>
+           
+                
+        </div>
+{{end}}
+{{define "js"}}
+<script>
+    document.getElementById("check-availability-button").addEventListener("click", function () {
+        let html = `
+        <form id="check-availability-form" action="" method="post" novalidate class="needs-validation">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-row" id="reservation-dates-modal">
+                        <div class="col">
+                            <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
+                        </div>
+                        <div class="col">
+                            <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        `;
+        attention.custom({
+            title: 'Choose your dates',
+            msg: html,
+        });
+    })
+</script>
+{{end}}
