@@ -10,6 +10,14 @@ import (
 	"github.com/go-chi/chi/middleware"
 )
 
+// routes initializes and configures the HTTP request multiplexer (mux) with middleware and routes.
+// It returns an http.Handler that can be used to serve HTTP requests.
+//
+// Parameters:
+// - app: A pointer to an instance of config.AppConfig, which contains application-wide configuration settings.
+//
+// Return value:
+// - An http.Handler that can be used to serve HTTP requests.
 func routes(app *config.AppConfig) http.Handler {
 	mux := chi.NewRouter()
 
