@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/FloMatt/bnb_booking/pkg/config"
-	"github.com/FloMatt/bnb_booking/pkg/models"
+	"github.com/FloMatt/bnb_booking/internal/config"
+	"github.com/FloMatt/bnb_booking/internal/models"
 	"github.com/justinas/nosurf"
 )
 

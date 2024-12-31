@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/FloMatt/bnb_booking/pkg/config"
-	"github.com/FloMatt/bnb_booking/pkg/handlers"
-	"github.com/FloMatt/bnb_booking/pkg/render"
+	"github.com/FloMatt/bnb_booking/internal/config"
+	"github.com/FloMatt/bnb_booking/internal/handlers"
+	"github.com/FloMatt/bnb_booking/internal/render"
 
 	"github.com/alexedwards/scs/v2"
 )

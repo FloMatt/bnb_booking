@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/FloMatt/bnb_booking/pkg/config"
-	"github.com/FloMatt/bnb_booking/pkg/models"
-	"github.com/FloMatt/bnb_booking/pkg/render"
+	"github.com/FloMatt/bnb_booking/internal/config"
+	"github.com/FloMatt/bnb_booking/internal/models"
+	"github.com/FloMatt/bnb_booking/internal/render"
 )
 
 // Repo the repository used by the handlers

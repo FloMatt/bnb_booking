@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/FloMatt/bnb_booking/pkg/config"
-	"github.com/FloMatt/bnb_booking/pkg/handlers"
+	"github.com/FloMatt/bnb_booking/internal/config"
+	"github.com/FloMatt/bnb_booking/internal/handlers"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
