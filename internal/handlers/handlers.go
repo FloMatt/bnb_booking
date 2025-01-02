@@ -82,13 +82,15 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 }
 
 // PostReservation is the handler for the posting of the reservation form
+
 func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
-	err := r.ParseForm()
+	err := r.ParseForm() // Parse the form and return the response object from the handler function
 	if err != nil {
 		log.Println(err)
 		return
 	}
 
+	// Create the reservation object
 	reservation := models.Reservation{
 		FirstName: r.Form.Get("first_name"),
 		LastName:  r.Form.Get("last_name"),
@@ -96,6 +98,7 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 		Phone:     r.Form.Get("phone"),
 	}
 
+	// Save the reservation object to the database and return the response object
 	form := forms.New(r.PostForm)
 
 	form.Required("first_name", "last_name", "email")
@@ -112,6 +115,9 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 		})
 		return
 	}
+
+	m.App.Session.Put((r.Context()), "reservation", reservation)
+	http.Redirect(w, r, "/reservation-summary", http.StatusSeeOther)
 }
 
 // SearchAvailability checks for available rooms and displays them
@@ -149,5 +155,18 @@ func (m *Repository) SearchAvailabilityJSON(w http.ResponseWriter, r *http.Reque
 }
 
 func (m *Repository) ReservationSummary(w http.ResponseWriter, r *http.Request) {
+	reservation, ok := m.App.Session.Get(r.Context(), "reservation").(models.Reservation)
+	if !ok {
+		log.Println("Cannot get item from session")
+		m.App.Session.Put(r.Context(), "error", "Invalid session")
+		http.Redirect(w, r, "/", http.StatusTemporaryRedirect)
+		return
+	}
+
+	data := make(map[string]interface{})
+	data["reservation"] = reservation
+	render.RenderTemplate(w, r, "reservation-summary.page.tmpl", &models.TemplateData{
+		Data: data,
+	})
 
 }
